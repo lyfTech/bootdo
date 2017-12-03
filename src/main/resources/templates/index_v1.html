@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-    <title>面向学习型的开源框架，简洁高效，减少过渡封装，展现技术本质</title>
-    <meta name="keywords" content="面向学习型的开源框架，简洁高效，杜绝过渡封装，展现技术本质本质">
-    <meta name="description" content="面向学习型的开源框架，简洁高效，杜绝过渡封装，展现技术本质本质">
+    <title>云智能系统</title>
+    <meta name="keywords" content="云智能系统">
+    <meta name="description" content="云智能系统">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
@@ -49,18 +49,6 @@
                         </ul>
                     </div>
                     <div class="logo-element">云智</div>
-                </li>
-                <li th:each="menu : ${menus}">
-                    <a href="#">
-                        <i class="fa fa fa-bar-chart-o" th:class="${menu.attributes.icon}"></i>
-                        <span class="nav-label" th:text="${menu.text}">基础信息</span>
-                        <span class="fa arrow"></span>
-                    </a>
-                    <ul class="nav nav-second-level">
-                        <li th:each="cmenu : ${menu.children}">
-                            <a class="J_menuItem" href="graph_echarts.html" th:text="${cmenu.text}" th:href="${cmenu.attributes.url}">系统管理</a>
-                        </li>
-                    </ul>
                 </li>
             </ul>
         </div>
@@ -166,6 +154,47 @@
 <script src="/js/appjs/oa/webSocket/stomp.min.js"></script>
 <!-- Toastr script -->
 <script src="/js/plugins/toastr/toastr.min.js"></script>
+<script th:inline="javascript">
+    var indexPage = {
+        menus: [[${menus}]],
+        loadMenu: function (menus) {
+            var li = '';
+            $.each(menus, function (i, menu) {
+                li += '<li>';
+                li += '<a href="#"><i class="'+menu.attributes.icon+'"></i><span class="nav-label">'+menu.text+'</span><span class="fa arrow"></span></a>';
+                li += '<ul class="nav nav-second-level" aria-expanded="true" style="">';
+                var secondLi = '';
+                $.each(menu.children, function (j, secondMenu) {
+                    if (!secondMenu.hasChildren) {
+                        secondLi += '<li>';
+                        secondLi += '<a class="J_menuItem" href="'+secondMenu.attributes.url+'">'+secondMenu.text+'</a>',
+                            secondLi += '</li>';
+                    } else {
+                        secondLi += '<li>';
+                        secondLi += '<a href="#">'+menu.text+' <span class="fa arrow"></span></a>';
+                        secondLi += '<ul class="nav nav-third-level">';
+                        var thirdLi = '';
+                        $.each(secondMenu.children, function (k, thirdMenu) {
+                            thirdLi += '<li>';
+                            thirdLi += '<a class="J_menuItem" href="'+thirdMenu.attributes.url+'">'+thirdMenu.text+'</a>';
+                            thirdLi += '</li>';
+                        });
+                        secondLi += thirdLi;
+                        secondLi += '</ul>';
+                        secondLi += '</li>';
+                    }
+                });
+                li += secondLi;
+                li += '</ul>';
+                li += '</li>';
+            });
+            $("#side-menu").append(li);
+        }
+    };
+
+    indexPage.loadMenu(indexPage.menus);
+
+</script>
 <script type="text/javascript">
     var stompClient = null;
     $(function () {
