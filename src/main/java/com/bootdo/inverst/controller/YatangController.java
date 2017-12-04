@@ -1,10 +1,9 @@
 package com.bootdo.inverst.controller;
 
-import java.util.List;
 import java.util.Map;
 
-import com.bootdo.common.utils.PageUtils;
-import com.bootdo.common.utils.PageRequest;
+import com.bootdo.common.pagehelper.PageRequest;
+import com.bootdo.common.pagehelper.PageResponse;
 import com.bootdo.common.utils.R;
 import com.bootdo.inverst.domain.YatangDO;
 import com.bootdo.inverst.service.YatangService;
@@ -42,13 +41,10 @@ public class YatangController {
 	@ResponseBody
 	@GetMapping("/list")
 	@RequiresPermissions("inverst:yatang:list")
-	public PageUtils list(@RequestParam Map<String, Object> params){
-		//查询列表数据
-        PageRequest pageRequest = new PageRequest(params);
-		List<YatangDO> yatangList = yatangService.list(pageRequest);
-		int total = yatangService.count(pageRequest);
-		PageUtils pageUtils = new PageUtils(yatangList, total);
-		return pageUtils;
+	public PageResponse list(@RequestParam Map<String, Object> params){
+        PageResponse<YatangDO> page = yatangService.queryPages(new PageRequest(params));
+        long total = page.getTotal();
+        return page;
 	}
 	
 	@GetMapping("/add")

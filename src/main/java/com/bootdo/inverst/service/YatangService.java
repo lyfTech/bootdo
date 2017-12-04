@@ -3,9 +3,8 @@ package com.bootdo.inverst.service;
 import java.util.List;
 import java.util.Map;
 
-import com.bootdo.common.utils.PageRequest;
+import com.bootdo.common.pagehelper.PageResponse;
 import com.bootdo.inverst.domain.YatangDO;
-import com.github.pagehelper.Page;
 
 /**
  * 
@@ -30,5 +29,5 @@ public interface YatangService {
 	
 	int batchRemove(Long[] ids);
 
-	Page<YatangDO> queryPages(PageRequest pageRequest);
+    PageResponse<YatangDO> queryPages(Map<String, Object> paramMap);
 }

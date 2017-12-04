@@ -10,19 +10,19 @@
 	<select id="list" resultType="com.bootdo.inverst.domain.YatangDO">
 		select `id`,`user_name`,`password`,`pay_password`,`max_coupon`,`keep_money`,`inverst_money`,`is_del`,`create_by`,`create_date`,`update_by`,`update_date` from iv_yatang
         <where>  
-		  		  <if test="id != null and id != ''"> and id = #{id} </if>
-		  		  <if test="userName != null and userName != ''"> and user_name = #{userName} </if>
-		  		  <if test="password != null and password != ''"> and password = #{password} </if>
-		  		  <if test="payPassword != null and payPassword != ''"> and pay_password = #{payPassword} </if>
-		  		  <if test="maxCoupon != null and maxCoupon != ''"> and max_coupon = #{maxCoupon} </if>
-		  		  <if test="keepMoney != null and keepMoney != ''"> and keep_money = #{keepMoney} </if>
-		  		  <if test="inverstMoney != null and inverstMoney != ''"> and inverst_money = #{inverstMoney} </if>
-		  		  <if test="isDel != null and isDel != ''"> and is_del = #{isDel} </if>
-		  		  <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
-		  		  <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
-		  		  <if test="updateBy != null and updateBy != ''"> and update_by = #{updateBy} </if>
-		  		  <if test="updateDate != null and updateDate != ''"> and update_date = #{updateDate} </if>
-		  		</where>
+              <if test="id != null and id != ''"> and id = #{id} </if>
+              <if test="userName != null and userName != ''"> and user_name = #{userName} </if>
+              <if test="password != null and password != ''"> and password = #{password} </if>
+              <if test="payPassword != null and payPassword != ''"> and pay_password = #{payPassword} </if>
+              <if test="maxCoupon != null and maxCoupon != ''"> and max_coupon = #{maxCoupon} </if>
+              <if test="keepMoney != null and keepMoney != ''"> and keep_money = #{keepMoney} </if>
+              <if test="inverstMoney != null and inverstMoney != ''"> and inverst_money = #{inverstMoney} </if>
+              <if test="isDel != null and isDel != ''"> and is_del = #{isDel} </if>
+              <if test="createBy != null and createBy != ''"> and create_by = #{createBy} </if>
+              <if test="createDate != null and createDate != ''"> and create_date = #{createDate} </if>
+              <if test="updateBy != null and updateBy != ''"> and update_by = #{updateBy} </if>
+              <if test="updateDate != null and updateDate != ''"> and update_date = #{updateDate} </if>
+        </where>
         <choose>
             <when test="sort != null and sort.trim() != ''">
                 order by ${sort} ${order}

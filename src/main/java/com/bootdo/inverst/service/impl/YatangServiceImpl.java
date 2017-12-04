@@ -3,11 +3,10 @@ package com.bootdo.inverst.service.impl;
 import java.util.List;
 import java.util.Map;
 
-import com.bootdo.common.utils.PageRequest;
+import com.bootdo.common.pagehelper.PageResponse;
 import com.bootdo.inverst.dao.YatangDao;
 import com.bootdo.inverst.domain.YatangDO;
 import com.bootdo.inverst.service.YatangService;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -55,9 +54,9 @@ public class YatangServiceImpl implements YatangService {
 	}
 
     @Override
-    public Page<YatangDO> queryPages(PageRequest pageRequest) {
-        PageHelper.startPage(pageRequest);
-        return yatangDao.list(pageRequest);
+    public PageResponse<YatangDO> queryPages(Map<String, Object> paramMap) {
+        PageHelper.startPage(paramMap);
+        return new PageResponse(yatangDao.list(paramMap));
     }
 
 }
