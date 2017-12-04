@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import ${package}.domain.${className}DO;
 import ${package}.service.${className}Service;
 import com.bootdo.common.utils.PageUtils;
-import com.bootdo.common.utils.Query;
+import com.bootdo.common.utils.PageRequest;
 import com.bootdo.common.utils.R;
 
 /**
@@ -46,9 +46,9 @@ public class ${className}Controller {
 	@RequiresPermissions("${pathName}:${classname}:${classname}")
 	public PageUtils list(@RequestParam Map<String, Object> params){
 		//查询列表数据
-        Query query = new Query(params);
-		List<${className}DO> ${classname}List = ${classname}Service.list(query);
-		int total = ${classname}Service.count(query);
+        Query pageRequest = new Query(params);
+		List<${className}DO> ${classname}List = ${classname}Service.list(pageRequest);
+		int total = ${classname}Service.count(pageRequest);
 		PageUtils pageUtils = new PageUtils(${classname}List, total);
 		return pageUtils;
 	}

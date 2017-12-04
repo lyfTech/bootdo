@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<meta charset="utf-8">
+<head th:include="include :: header"></head>
+<body class="gray-bg">
+	<div class="wrapper wrapper-content ">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="ibox float-e-margins">
+					<div class="ibox-content">
+						<form class="form-horizontal m-t" id="signupForm">
+							<div class="form-group">	
+								<label class="col-sm-3 control-label">登陆用户名：</label>
+								<div class="col-sm-8">
+									<input id="userName" name="userName" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">登陆密码：</label>
+								<div class="col-sm-8">
+									<input id="password" name="password" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">支付密码：</label>
+								<div class="col-sm-8">
+									<input id="payPassword" name="payPassword" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">使用的最大红包倍数：</label>
+								<div class="col-sm-8">
+									<input id="maxCoupon" name="maxCoupon" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">保留账号剩余款：</label>
+								<div class="col-sm-8">
+									<input id="keepMoney" name="keepMoney" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">投资金额：</label>
+								<div class="col-sm-8">
+									<input id="inverstMoney" name="inverstMoney" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">0:正常  1：已删除：</label>
+								<div class="col-sm-8">
+									<input id="isDel" name="isDel" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="createBy" name="createBy" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="createDate" name="createDate" class="form-control" type="text">
+								</div>
+							</div>
+                            <div class="form-group">
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="updateBy" name="updateBy" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 control-label">：</label>
+								<div class="col-sm-8">
+									<input id="updateDate" name="updateDate" class="form-control" type="text">
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-8 col-sm-offset-3">
+									<button type="submit" class="btn btn-primary">提交</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+	</div>
+	</div>
+	<div th:include="include::footer"></div>
+	<script type="text/javascript" src="/js/appjs/inverst/yatang/add.js">
+	</script>
+</body>
+</html>
